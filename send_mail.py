@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 pass_google = os.environ.get('PASS_GOOGLE_AUTHENTICATION')
 sender_gmail = os.environ.get('SENDER_GMAIL')
-email_recipient = os.environ.get('EMAIL_RECIPIENT')
+email_recipient = os.environ.get('EMAIL_RECIPIENT').split(', ')
 
 
 def send_mail(dolar_price, euro_price, btc_price):  
@@ -23,7 +23,7 @@ def send_mail(dolar_price, euro_price, btc_price):
     msg = email.message.Message()
     msg['Subject'] = "Cotação diaria"
     msg['From'] = f'{sender_gmail}'
-    msg['To'] = email_recipient
+    msg['To'] = ", ".join(email_recipient)
     password = f'{pass_google}' 
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(body_mail)
@@ -31,6 +31,7 @@ def send_mail(dolar_price, euro_price, btc_price):
     s = smtplib.SMTP('smtp.gmail.com: 587')
     s.starttls()
     s.login(msg['From'], password)
-    s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
+    # s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
+    s.sendmail(msg['From'], email_recipient, msg.as_string().encode('utf-8'))
     print('Email enviado')
 
