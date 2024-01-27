@@ -1,5 +1,16 @@
+import os
 import requests
 from send_mail import send_mail
+from dotenv import load_dotenv
+
+load_dotenv()
+pass_google = os.environ.get('PASS_GOOGLE_AUTHENTICATION')
+sender_gmail = os.environ.get('SENDER_GMAIL')
+email_recipient = os.environ.get('EMAIL_RECIPIENT').split(', ')
+
+print('print', pass_google)
+print(sender_gmail)
+print(email_recipient)
 
 request = requests.get('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL')
 

@@ -7,9 +7,13 @@ import email.message
 from dotenv import load_dotenv
 
 load_dotenv()
-pass_google = os.environ.get('PASS_GOOGLE_AUTHENTICATION')
-sender_gmail = os.environ.get('SENDER_GMAIL')
-email_recipient = os.environ.get('EMAIL_RECIPIENT').split(', ')
+pass_google = os.environ['PASS_GOOGLE_AUTHENTICATION']
+sender_gmail = os.environ['SENDER_GMAIL']
+email_recipient = os.environ['EMAIL_RECIPIENT'].split(', ')
+
+print('print', pass_google)
+print(sender_gmail)
+print(email_recipient)
 
 
 def send_mail(dolar_price, euro_price, btc_price): 
