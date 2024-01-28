@@ -23,11 +23,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Print Variables
-        run: |
-          echo '${{ env.PASS_GOOGLE_AUTHENTICATION }}'
-          echo "$SENDER_GMAIL"
-          echo "$EMAIL_RECIPIENT"
       - name: Run Python script
         run: python main.py
         env:

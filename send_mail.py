@@ -11,11 +11,6 @@ pass_google = os.environ['PASS_GOOGLE_AUTHENTICATION']
 sender_gmail = os.environ['SENDER_GMAIL']
 email_recipient = os.environ['EMAIL_RECIPIENT'].split(', ')
 
-print('print', pass_google)
-print(sender_gmail)
-print(email_recipient)
-
-
 def send_mail(dolar_price, euro_price, btc_price): 
     body_mail = f"""
     <h2>Cotação atualizada em {datetime.now()}</h2>
