@@ -22,7 +22,7 @@ def send_mail(dolar_price, euro_price, btc_price):
     msg = email.message.Message()
     msg['Subject'] = "Cotação diaria"
     msg['From'] = f'{sender_gmail}'
-    msg['To'] = ', '.join(email_recipient)
+    msg['Bcc'] = ', '.join(email_recipient)
     password = f'{pass_google}' 
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(body_mail)
