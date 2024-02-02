@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 import os
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import smtplib
 import email.message
 from dotenv import load_dotenv
@@ -13,7 +13,7 @@ email_recipient = os.environ['EMAIL_RECIPIENT'].split(', ')
 
 def send_mail(dolar_price, euro_price, btc_price): 
     body_mail = f"""
-    <h2>Cotação atualizada em {datetime.now()}</h2>
+    <h2>Cotação atualizada no horário {datetime.now(timezone(timedelta(hours=-3))).strftime('%H:%M')}</h2>
     <p>Cotação do Dolar: R${dolar_price:.2f}</p>
     <p>Cotação do Euro: R${euro_price:.2f}</p>
     <p>Cotação do Bitcoin: R${btc_price:.2f}</p>
