@@ -3,7 +3,7 @@ name: Run python.main
 on:
   schedule:
     - cron: '0 12 * * *'
-
+  workflow_dispatch:
 jobs:
   python-run:
     runs-on: ubuntu-latest
